@@ -13,7 +13,7 @@ const FoodCard = ({ item }) => {
     const location = useLocation();
 
     const handleAddToCart = item => {
-        console.log(item);
+        // console.log(item);
         if(user && user.email){
             const cartItem = {menuItemId: _id, name, image, price, email: user.email}
             fetch('http://localhost:5000/carts', {
@@ -53,14 +53,14 @@ const FoodCard = ({ item }) => {
         }
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="shadow-xl card w-96 bg-base-100">
             <figure><img src={image} alt="Shoes" /></figure>
-            <p className="absolute right-0 mr-4 mt-4 px-4 bg-slate-900 text-white">${price}</p>
-            <div className="card-body flex flex-col items-center">
+            <p className="absolute right-0 px-4 mt-4 mr-4 text-white bg-slate-900">${price}</p>
+            <div className="flex flex-col items-center card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
-                <div className="card-actions justify-end">
-                    <button onClick={() => handleAddToCart(item)} className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-400 mt-4">Add to Cart</button>
+                <div className="justify-end card-actions">
+                    <button onClick={() => handleAddToCart(item)} className="mt-4 border-0 border-b-4 border-orange-400 btn btn-outline bg-slate-100">Add to Cart</button>
                 </div>
             </div>
         </div>
